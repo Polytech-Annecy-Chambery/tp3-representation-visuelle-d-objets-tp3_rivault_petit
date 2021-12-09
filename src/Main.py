@@ -16,7 +16,7 @@ import copy
 
 
 def Q1a():
-    pass
+    return Configuration()
     
 def Q1b_f():
     return Configuration({'screenPosition': -5, 'xAxisColor': [1, 1, 0]}). \
@@ -67,8 +67,7 @@ def Q5b():
     print(section.canCreateOpening(opening3))
     return Configuration()    
     
-def Q5c1():      
-    section = Section({'width':7, 'height':2.6})
+def Q5c1():       
     opening1 = Opening({'position': [2, 0, 0], 'width':0.9, 'height':2.15, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
     sections = section.createOpening(opening1)
     configuration = Configuration()
