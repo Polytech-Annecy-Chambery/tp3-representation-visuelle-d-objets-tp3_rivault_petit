@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 16 19:47:50 2017
-
 @author: lfoul
 """
 
@@ -67,7 +66,8 @@ def Q5b():
     print(section.canCreateOpening(opening3))
     return Configuration()    
     
-def Q5c1():       
+def Q5c1():      
+    section = Section({'width':7, 'height':2.6})
     opening1 = Opening({'position': [2, 0, 0], 'width':0.9, 'height':2.15, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
     sections = section.createOpening(opening1)
     configuration = Configuration()
@@ -93,9 +93,9 @@ def Q6():
 def main():
     # Enlever un des commentaires pour la question traitée
     
-    configuration = Q1a()
-    # configuration = Q1b_f()
-    # configuration = Q2b()
+    #configuration = Q1a()
+    #configuration = Q1b_f()
+    configuration = Q2b()
     # configuration = Q2c()
     # configuration = Q3a()
     # configuration = Q4a()
