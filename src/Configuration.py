@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 16 19:47:50 2017
-
 @author: lfoul
 """
 import pygame
@@ -75,8 +74,8 @@ class Configuration:
         gl.glMatrixMode(gl.GL_MODELVIEW)
         gl.glLoadIdentity()
         gl.glTranslatef(0.0,0.0, self.parameters['screenPosition'])       
-        gl.glRotate(-90,1,0,0)
         
+        gl.glRotate(-90,1,0,0)
     # Getter
     def getParameter(self, parameterKey):
         return self.parameters[parameterKey]    
@@ -143,35 +142,32 @@ class Configuration:
         elif self.event.dict['unicode'] == 'z' or self.event.key == pygame.K_z:
             gl.glRotate(2.5, 0, 0, 1) 
         
-        if self.event.key==pygame.K_PAGEDOWN:
-            gl.glScalef(1/1.1,1/1.1,1/1.1)
-        elif self.event.key==pygame.K_PAGEUP:
-            gl.glScalef(1.1,1.1,1.1)
-        
         # Draws or suppresses the reference frame
         elif self.event.dict['unicode'] == 'a' or self.event.key == pygame.K_a:
             self.parameters['axes'] = not self.parameters['axes']
             pygame.time.wait(300)
-    
+     # Rotates around the z-axis                       
+        if self.event.key == pygame.K_PAGEUP:
+            gl.glScaled(1.1, 1.1, 1.1)                     
+        elif self.event.key == pygame.K_PAGEDOWN:
+            gl.glScaled(0.9, 0.9, 0.9) 
     # Processes the MOUSEBUTTONDOWN event
     def processMouseButtonDownEvent(self):
         if self.event.button==4:
-            gl.glScalef(1.1,1.1,1.1)
-        elif self.event.button==5:
-            gl.glScalef(1/1.1,1/1.1,1/1.1)
+            gl.glScalef(1.2,1.2,1.2)
+        if self.event.button==5:
+            gl.glScalef(0.8,0.8,0.8)
     
     # Processes the MOUSEMOTION event
     def processMouseMotionEvent(self):
         if pygame.mouse.get_pressed()[2]:
             x,z=self.event.rel
-            gl.glTranslate(x//5,0,0)
-            gl.glTranslate(0,0,z//5)
+            gl.glTranslatef(x//10,0,0)
+            gl.glTranslatef(0,0,z//10)
         if pygame.mouse.get_pressed()[0]:
             x,z=self.event.rel
-            gl.glRotate(x,1,0,0)
-            gl.glRotate(z,0,0,1)
-        
-            
+            gl.glRotatef(x,1,0,0)
+            gl.glRotatef(z,0,0,1)
          
     # Displays on screen and processes events    
     def display(self): 
